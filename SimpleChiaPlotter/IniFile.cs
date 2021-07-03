@@ -3,6 +3,14 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
 
+/// <summary>
+/// This little class was made by someone over on stack overflow here is the link to the comment
+/// https://stackoverflow.com/a/14906422
+/// Why make a custom ini reader/writer class when someone already has and has given it out freely?
+/// 
+/// Can use sections in your ini files and also capable of deleting sections and keys! Awesome!
+/// </summary>
+
 // Change this to match your program's normal namespace
 namespace SimpleChiaPlotter
 {

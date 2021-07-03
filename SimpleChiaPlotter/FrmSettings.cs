@@ -15,26 +15,28 @@ namespace SimpleChiaPlotter
 {
     public partial class FrmSettings : Form
     {
+        // create chia class and MyIni class
         private Chia chia = new Chia();
         IniFile MyIni = new IniFile("SimpleChiaMADMAXPlotter.ini");
 
         public FrmSettings()
         {
             InitializeComponent();
-            chia.Directory = MyIni.Read("Directory");
-            chia.Executable = MyIni.Read("Executable");
-            chia.Buckets = MyIni.Read("Buckets");
-            chia.Threads = MyIni.Read("Threads");
-            chia.TotalPlots = MyIni.Read("TotalPlots");
-            chia.FarmerPublicKey = MyIni.Read("FarmerPublicKey");
-            chia.PoolPublicKey = MyIni.Read("PoolPublicKey");
-            chia.TempDir1 = MyIni.Read("TempDir1");
-            chia.TempDir2 = MyIni.Read("TempDir2");
-            chia.TargetDir = MyIni.Read("TargetDir");
+            LoadConfig();
             textBoxDeamonDirectory.Text = chia.Directory;
             textBoxExecutable.Text = chia.Executable;
         }
-
+        /// <summary>
+        /// Load settings from ini file
+        /// </summary>
+        private void LoadConfig()
+        {
+            chia.Directory = MyIni.Read("Directory");
+            chia.Executable = MyIni.Read("Executable");
+        }
+        /// <summary>
+        /// Change MADMAX directory
+        /// </summary>
         private void btnDirectory_Click(object sender, EventArgs e)
         {
             using (var fbd = new FolderBrowserDialog())
@@ -49,7 +51,9 @@ namespace SimpleChiaPlotter
                 }
             }
         }
-
+        /// <summary>
+        /// Change MADMAX executable
+        /// </summary>
         private void btnExecutable_Click(object sender, EventArgs e)
         {
             using (var openFileDialog1 = new OpenFileDialog())
@@ -66,19 +70,13 @@ namespace SimpleChiaPlotter
                 }
             }
         }
-
+        /// <summary>
+        /// Save settings to ini file
+        /// </summary>
         private void btnSave_Click(object sender, EventArgs e)
         {
             MyIni.Write("Directory", chia.Directory);
             MyIni.Write("Executable", chia.Executable);
-            MyIni.Write("Buckets", chia.Buckets);
-            MyIni.Write("Threads", chia.Threads);
-            MyIni.Write("TotalPlots", chia.TotalPlots);
-            MyIni.Write("FarmerPublicKey", chia.FarmerPublicKey);
-            MyIni.Write("PoolPublicKey", chia.PoolPublicKey);
-            MyIni.Write("TempDir1", chia.TempDir1);
-            MyIni.Write("TempDir2", chia.TempDir2);
-            MyIni.Write("TargetDir", chia.TargetDir);
             this.Close();
         }
     }
