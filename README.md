@@ -9,4 +9,4 @@ Have a look at the wiki for more details - https://github.com/xTheJakalx/SimpleC
 
 Basic install instructions - https://github.com/xTheJakalx/SimpleChiaMADMAXPlotterGUI/wiki/Install-Instructions
 
-Added new arguments for MADMAX plotter 0.0.7
+Added new arguments for MADMAX plotter 0.1.1
