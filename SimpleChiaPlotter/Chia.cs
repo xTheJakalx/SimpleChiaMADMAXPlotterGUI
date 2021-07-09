@@ -19,6 +19,7 @@ namespace SimpleChiaPlotter
         public string TotalPlots { get; set; }
         public string FarmerPublicKey { get; set; }
         public string PoolPublicKey { get; set; }
+        public string NFTAddress { get; set; }
         public string TempDir1 { get; set; }
         public string TempDir2 { get; set; }
         public string TargetDir { get; set; }
@@ -26,5 +27,7 @@ namespace SimpleChiaPlotter
         public bool TempToggle { get; set; }
         public bool WaitForCopy { get; set; }
         public bool EnableBuckets3 { get; set; }
+        public bool NFTEnabled { get; set; }
+        public bool PoolKeyEnabled { get; set; }
     }
 }

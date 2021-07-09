@@ -57,7 +57,13 @@ namespace SimpleChiaPlotter
                     if (!MyIni.KeyExists("TempDir2Enabled")) { MyIni.Write("TempDir2Enabled", "False"); }
                     checkBox2ndTempDir.Checked = bool.Parse(MyIni.Read("TempDir2Enabled")); 
                     if (!MyIni.KeyExists("EnableBuckets3")) { MyIni.Write("EnableBuckets3", "False"); }
-                    checkBoxBuckets3.Checked = bool.Parse(MyIni.Read("EnableBuckets3")); 
+                    checkBoxBuckets3.Checked = bool.Parse(MyIni.Read("EnableBuckets3"));
+                    if (!MyIni.KeyExists("NFTAddress")) { MyIni.Write("NFTAddress", null); }
+                    textBoxNFTAddress.Text = MyIni.Read("NFTAddress");
+                    if (!MyIni.KeyExists("NFTEnabled")) { MyIni.Write("NFTEnabled", "False"); }
+                    checkBoxNFTAddress.Checked = bool.Parse(MyIni.Read("NFTEnabled"));
+                    if (!MyIni.KeyExists("PoolKeyEnabled")) { MyIni.Write("PoolKeyEnabled", "true"); }
+                    checkBoxPublicPoolKey.Checked = bool.Parse(MyIni.Read("PoolKeyEnabled"));
                 }
                 catch (Exception)
                 {
@@ -87,8 +93,11 @@ namespace SimpleChiaPlotter
                 TempToggle = bool.Parse(MyIni.Read("TempToggle")),
                 WaitForCopy = bool.Parse(MyIni.Read("WaitForCopy")),
                 TempDir2Enabled = bool.Parse(MyIni.Read("TempDir2Enabled")),
-                EnableBuckets3 = bool.Parse(MyIni.Read("EnableBuckets3"))
-        };
+                EnableBuckets3 = bool.Parse(MyIni.Read("EnableBuckets3")),
+                NFTAddress = MyIni.Read("NFTAddress"),
+                NFTEnabled = bool.Parse(MyIni.Read("NFTEnabled")),
+                PoolKeyEnabled = bool.Parse(MyIni.Read("PoolKeyEnabled"))
+            };
             if (chia.Directory == "")
             {
                 // if madmax directory is null in ini file open the settings form
@@ -118,6 +127,11 @@ namespace SimpleChiaPlotter
             MyIni.Write("WaitForCopy", "false");
             MyIni.Write("TempDir2Enabled", "false");
             MyIni.Write("EnableBuckets3", "false");
+            MyIni.Write("NFTAddress", null);
+            MyIni.Write("NFTEnabled", "false");
+            MyIni.Write("PoolKeyEnabled", "true");
+            // set default behaviour for form
+            checkBoxPublicPoolKey.Checked = true;
         }
 
         private Chia SaveConfig()
@@ -133,6 +147,7 @@ namespace SimpleChiaPlotter
                 TotalPlots = textBoxPlotCount.Text,
                 FarmerPublicKey = textBoxFarmerPublicKey.Text,
                 PoolPublicKey = textBoxPoolPublicKey.Text,
+                NFTAddress = textBoxNFTAddress.Text,
                 TempDir1 = textBoxTempDir1.Text,
                 TempDir2 = textBoxTempDir2.Text,
                 TargetDir = textBoxFinalDir.Text,
@@ -140,8 +155,10 @@ namespace SimpleChiaPlotter
                 TempToggle = checkBoxSwap.CheckState == CheckState.Checked,
                 WaitForCopy = checkBoxWait.CheckState == CheckState.Checked,
                 TempDir2Enabled = checkBox2ndTempDir.CheckState == CheckState.Checked,
-                EnableBuckets3 = checkBoxBuckets3.CheckState == CheckState.Checked
-        };
+                EnableBuckets3 = checkBoxBuckets3.CheckState == CheckState.Checked,
+                NFTEnabled = checkBoxNFTAddress.CheckState == CheckState.Checked,
+                PoolKeyEnabled = checkBoxPublicPoolKey.CheckState == CheckState.Checked
+            };
             // save settings to ini file
             MyIni.Write("Directory", chia.Directory);
             MyIni.Write("Executable", chia.Executable);
@@ -154,11 +171,14 @@ namespace SimpleChiaPlotter
             MyIni.Write("TempDir1", chia.TempDir1);
             MyIni.Write("TempDir2", chia.TempDir2);
             MyIni.Write("TargetDir", chia.TargetDir);
+            MyIni.Write("NFTAddress", chia.NFTAddress);
             // save bools to the ini file
             MyIni.Write("TempToggle", chia.TempToggle.ToString());
             MyIni.Write("WaitForCopy", chia.WaitForCopy.ToString());
             MyIni.Write("TempDir2Enabled", chia.TempDir2Enabled.ToString());
             MyIni.Write("EnableBuckets3", chia.EnableBuckets3.ToString());
+            MyIni.Write("NFTEnabled", chia.NFTEnabled.ToString());
+            MyIni.Write("PoolKeyEnabled", chia.PoolKeyEnabled.ToString());
 
             return chia;
         }
@@ -205,6 +225,7 @@ namespace SimpleChiaPlotter
                 var tempDir2 = false;
                 var wait = false;
                 var tempToggle = false;
+                var NFTAddress = false;
                 // check is using 2 temp dirs
                 if (checkBox2ndTempDir.Checked) 
                 { 
@@ -217,7 +238,9 @@ namespace SimpleChiaPlotter
                 }
                 // check for wait for plot copy
                 if (checkBoxWait.Checked) { wait = true; }
-                plotter.Run(chia, tempDir2, wait, tempToggle);
+                // check for NFT address
+                if (checkBoxNFTAddress.Checked) { NFTAddress = true; }
+                plotter.Run(chia, tempDir2, wait, tempToggle, NFTAddress);
             }
 
         }
@@ -315,6 +338,40 @@ namespace SimpleChiaPlotter
         private void PlotterLink()
         {
             System.Diagnostics.Process.Start("https://github.com/stotiks/chia-plotter");
+        }
+
+        private void checkBoxPublicPoolKey_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxPublicPoolKey.CheckState == CheckState.Checked)
+            {
+                textBoxPoolPublicKey.Enabled = true;
+                textBoxNFTAddress.Enabled = false;
+                checkBoxNFTAddress.Checked = false;
+            }
+            else
+            {
+                checkBoxPublicPoolKey.Checked = false;
+                checkBoxNFTAddress.Checked = true;
+                textBoxPoolPublicKey.Enabled = false;
+                textBoxNFTAddress.Enabled = true;
+            }
+        }
+
+        private void checkBoxNFTAddress_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxNFTAddress.CheckState == CheckState.Checked)
+            {
+                textBoxPoolPublicKey.Enabled = false;
+                textBoxNFTAddress.Enabled = true;
+                checkBoxPublicPoolKey.Checked = false;
+            }
+            else
+            {
+                checkBoxPublicPoolKey.Checked = true;
+                checkBoxNFTAddress.Checked = false;
+                textBoxPoolPublicKey.Enabled = true;
+                textBoxNFTAddress.Enabled = false;
+            }
         }
     }
 }

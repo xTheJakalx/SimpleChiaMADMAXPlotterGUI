@@ -55,16 +55,20 @@ namespace SimpleChiaPlotter
             this.textBoxTempDir2 = new System.Windows.Forms.TextBox();
             this.textBoxTempDir1 = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.checkBoxBuckets3 = new System.Windows.Forms.CheckBox();
+            this.textBoxBuckets3 = new System.Windows.Forms.TextBox();
+            this.lblBuckets3 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.textBoxPlotCount = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.checkBoxSwap = new System.Windows.Forms.CheckBox();
+            this.checkBoxWait = new System.Windows.Forms.CheckBox();
             this.lblTmpDir1Info = new System.Windows.Forms.Label();
             this.checkBox2ndTempDir = new System.Windows.Forms.CheckBox();
             this.lblMainInfo = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.lblPoolPublicKey = new System.Windows.Forms.Label();
             this.textBoxPoolPublicKey = new System.Windows.Forms.TextBox();
             this.lblFarmerPublicKey = new System.Windows.Forms.Label();
             this.textBoxFarmerPublicKey = new System.Windows.Forms.TextBox();
@@ -72,12 +76,11 @@ namespace SimpleChiaPlotter
             this.label2 = new System.Windows.Forms.Label();
             this.btnBuyMeACoffee = new System.Windows.Forms.Button();
             this.lblPlotterLink = new System.Windows.Forms.LinkLabel();
-            this.checkBoxWait = new System.Windows.Forms.CheckBox();
-            this.lblBuckets3 = new System.Windows.Forms.Label();
-            this.textBoxBuckets3 = new System.Windows.Forms.TextBox();
-            this.checkBoxSwap = new System.Windows.Forms.CheckBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.checkBoxBuckets3 = new System.Windows.Forms.CheckBox();
+            this.checkBoxPublicPoolKey = new System.Windows.Forms.CheckBox();
+            this.checkBoxNFTAddress = new System.Windows.Forms.CheckBox();
+            this.textBoxNFTAddress = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.menuStrip.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -158,7 +161,7 @@ namespace SimpleChiaPlotter
             // 
             // btnPlot
             // 
-            this.btnPlot.Location = new System.Drawing.Point(672, 254);
+            this.btnPlot.Location = new System.Drawing.Point(672, 342);
             this.btnPlot.Name = "btnPlot";
             this.btnPlot.Size = new System.Drawing.Size(127, 62);
             this.btnPlot.TabIndex = 2;
@@ -307,12 +310,40 @@ namespace SimpleChiaPlotter
             this.groupBox2.Controls.Add(this.textBoxBuckets);
             this.groupBox2.Controls.Add(this.lblBuckets);
             this.groupBox2.Controls.Add(this.lblThreads);
-            this.groupBox2.Location = new System.Drawing.Point(12, 213);
+            this.groupBox2.Location = new System.Drawing.Point(12, 301);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(130, 248);
             this.groupBox2.TabIndex = 8;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "2. Setup basic settings";
+            // 
+            // checkBoxBuckets3
+            // 
+            this.checkBoxBuckets3.AutoSize = true;
+            this.checkBoxBuckets3.Location = new System.Drawing.Point(11, 202);
+            this.checkBoxBuckets3.Name = "checkBoxBuckets3";
+            this.checkBoxBuckets3.Size = new System.Drawing.Size(107, 17);
+            this.checkBoxBuckets3.TabIndex = 27;
+            this.checkBoxBuckets3.Text = "Enable Buckets3";
+            this.checkBoxBuckets3.UseVisualStyleBackColor = true;
+            // 
+            // textBoxBuckets3
+            // 
+            this.textBoxBuckets3.Location = new System.Drawing.Point(8, 220);
+            this.textBoxBuckets3.Name = "textBoxBuckets3";
+            this.textBoxBuckets3.Size = new System.Drawing.Size(95, 20);
+            this.textBoxBuckets3.TabIndex = 26;
+            this.textBoxBuckets3.Text = "256";
+            // 
+            // lblBuckets3
+            // 
+            this.lblBuckets3.AutoSize = true;
+            this.lblBuckets3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBuckets3.Location = new System.Drawing.Point(7, 188);
+            this.lblBuckets3.Name = "lblBuckets3";
+            this.lblBuckets3.Size = new System.Drawing.Size(122, 13);
+            this.lblBuckets3.TabIndex = 25;
+            this.lblBuckets3.Text = "Phase [3-4] Buckets";
             // 
             // label5
             // 
@@ -364,12 +395,33 @@ namespace SimpleChiaPlotter
             this.groupBox3.Controls.Add(this.btnTempDir2);
             this.groupBox3.Controls.Add(this.textBoxFinalDir);
             this.groupBox3.Controls.Add(this.lblTempDir2);
-            this.groupBox3.Location = new System.Drawing.Point(148, 213);
+            this.groupBox3.Location = new System.Drawing.Point(148, 301);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(462, 248);
             this.groupBox3.TabIndex = 9;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "3. Select Directories";
+            // 
+            // checkBoxSwap
+            // 
+            this.checkBoxSwap.AutoSize = true;
+            this.checkBoxSwap.Location = new System.Drawing.Point(12, 123);
+            this.checkBoxSwap.Name = "checkBoxSwap";
+            this.checkBoxSwap.Size = new System.Drawing.Size(446, 17);
+            this.checkBoxSwap.TabIndex = 29;
+            this.checkBoxSwap.Text = "Swap temporary drives after every plot (evenly distribute drive wear, no need for" +
+    " ramdrive)";
+            this.checkBoxSwap.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxWait
+            // 
+            this.checkBoxWait.AutoSize = true;
+            this.checkBoxWait.Location = new System.Drawing.Point(12, 209);
+            this.checkBoxWait.Name = "checkBoxWait";
+            this.checkBoxWait.Size = new System.Drawing.Size(237, 17);
+            this.checkBoxWait.TabIndex = 28;
+            this.checkBoxWait.Text = "Wait for plot copy to finish before proceeding";
+            this.checkBoxWait.UseVisualStyleBackColor = true;
             // 
             // lblTmpDir1Info
             // 
@@ -402,7 +454,10 @@ namespace SimpleChiaPlotter
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.lblPoolPublicKey);
+            this.groupBox4.Controls.Add(this.label7);
+            this.groupBox4.Controls.Add(this.textBoxNFTAddress);
+            this.groupBox4.Controls.Add(this.checkBoxNFTAddress);
+            this.groupBox4.Controls.Add(this.checkBoxPublicPoolKey);
             this.groupBox4.Controls.Add(this.textBoxPoolPublicKey);
             this.groupBox4.Controls.Add(this.lblFarmerPublicKey);
             this.groupBox4.Controls.Add(this.textBoxFarmerPublicKey);
@@ -410,23 +465,14 @@ namespace SimpleChiaPlotter
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox4.Location = new System.Drawing.Point(12, 118);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(824, 89);
+            this.groupBox4.Size = new System.Drawing.Size(824, 163);
             this.groupBox4.TabIndex = 11;
             this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "1. Public Keys";
-            // 
-            // lblPoolPublicKey
-            // 
-            this.lblPoolPublicKey.AutoSize = true;
-            this.lblPoolPublicKey.Location = new System.Drawing.Point(37, 58);
-            this.lblPoolPublicKey.Name = "lblPoolPublicKey";
-            this.lblPoolPublicKey.Size = new System.Drawing.Size(81, 13);
-            this.lblPoolPublicKey.TabIndex = 32;
-            this.lblPoolPublicKey.Text = "Pool Public Key";
+            this.groupBox4.Text = "1. Public Keys and NFT Address";
             // 
             // textBoxPoolPublicKey
             // 
-            this.textBoxPoolPublicKey.Location = new System.Drawing.Point(127, 55);
+            this.textBoxPoolPublicKey.Location = new System.Drawing.Point(127, 98);
             this.textBoxPoolPublicKey.Name = "textBoxPoolPublicKey";
             this.textBoxPoolPublicKey.Size = new System.Drawing.Size(660, 20);
             this.textBoxPoolPublicKey.TabIndex = 6;
@@ -461,7 +507,7 @@ namespace SimpleChiaPlotter
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(649, 326);
+            this.label2.Location = new System.Drawing.Point(649, 414);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(166, 13);
             this.label2.TabIndex = 28;
@@ -472,7 +518,7 @@ namespace SimpleChiaPlotter
             this.btnBuyMeACoffee.AutoSize = true;
             this.btnBuyMeACoffee.BackgroundImage = global::SimpleChiaPlotter.Properties.Resources.BuyMeACoffee;
             this.btnBuyMeACoffee.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnBuyMeACoffee.Location = new System.Drawing.Point(616, 351);
+            this.btnBuyMeACoffee.Location = new System.Drawing.Point(616, 439);
             this.btnBuyMeACoffee.Name = "btnBuyMeACoffee";
             this.btnBuyMeACoffee.Size = new System.Drawing.Size(222, 67);
             this.btnBuyMeACoffee.TabIndex = 30;
@@ -490,45 +536,6 @@ namespace SimpleChiaPlotter
             this.lblPlotterLink.Text = "here";
             this.lblPlotterLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblPlotterLink_LinkClicked);
             // 
-            // checkBoxWait
-            // 
-            this.checkBoxWait.AutoSize = true;
-            this.checkBoxWait.Location = new System.Drawing.Point(12, 209);
-            this.checkBoxWait.Name = "checkBoxWait";
-            this.checkBoxWait.Size = new System.Drawing.Size(237, 17);
-            this.checkBoxWait.TabIndex = 28;
-            this.checkBoxWait.Text = "Wait for plot copy to finish before proceeding";
-            this.checkBoxWait.UseVisualStyleBackColor = true;
-            // 
-            // lblBuckets3
-            // 
-            this.lblBuckets3.AutoSize = true;
-            this.lblBuckets3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBuckets3.Location = new System.Drawing.Point(7, 188);
-            this.lblBuckets3.Name = "lblBuckets3";
-            this.lblBuckets3.Size = new System.Drawing.Size(122, 13);
-            this.lblBuckets3.TabIndex = 25;
-            this.lblBuckets3.Text = "Phase [3-4] Buckets";
-            // 
-            // textBoxBuckets3
-            // 
-            this.textBoxBuckets3.Location = new System.Drawing.Point(8, 220);
-            this.textBoxBuckets3.Name = "textBoxBuckets3";
-            this.textBoxBuckets3.Size = new System.Drawing.Size(95, 20);
-            this.textBoxBuckets3.TabIndex = 26;
-            this.textBoxBuckets3.Text = "256";
-            // 
-            // checkBoxSwap
-            // 
-            this.checkBoxSwap.AutoSize = true;
-            this.checkBoxSwap.Location = new System.Drawing.Point(12, 123);
-            this.checkBoxSwap.Name = "checkBoxSwap";
-            this.checkBoxSwap.Size = new System.Drawing.Size(446, 17);
-            this.checkBoxSwap.TabIndex = 29;
-            this.checkBoxSwap.Text = "Swap temporary drives after every plot (evenly distribute drive wear, no need for" +
-    " ramdrive)";
-            this.checkBoxSwap.UseVisualStyleBackColor = true;
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -537,23 +544,54 @@ namespace SimpleChiaPlotter
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(361, 22);
             this.label6.TabIndex = 32;
-            this.label6.Text = "Compatable with MADMAX plotter 0.0.7";
+            this.label6.Text = "Compatable with MADMAX plotter 0.1.1";
             // 
-            // checkBoxBuckets3
+            // checkBoxPublicPoolKey
             // 
-            this.checkBoxBuckets3.AutoSize = true;
-            this.checkBoxBuckets3.Location = new System.Drawing.Point(11, 202);
-            this.checkBoxBuckets3.Name = "checkBoxBuckets3";
-            this.checkBoxBuckets3.Size = new System.Drawing.Size(107, 17);
-            this.checkBoxBuckets3.TabIndex = 27;
-            this.checkBoxBuckets3.Text = "Enable Buckets3";
-            this.checkBoxBuckets3.UseVisualStyleBackColor = true;
+            this.checkBoxPublicPoolKey.AutoSize = true;
+            this.checkBoxPublicPoolKey.Location = new System.Drawing.Point(21, 100);
+            this.checkBoxPublicPoolKey.Name = "checkBoxPublicPoolKey";
+            this.checkBoxPublicPoolKey.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.checkBoxPublicPoolKey.Size = new System.Drawing.Size(100, 17);
+            this.checkBoxPublicPoolKey.TabIndex = 33;
+            this.checkBoxPublicPoolKey.Text = "Pool Public Key";
+            this.checkBoxPublicPoolKey.UseVisualStyleBackColor = true;
+            this.checkBoxPublicPoolKey.CheckedChanged += new System.EventHandler(this.checkBoxPublicPoolKey_CheckedChanged);
+            // 
+            // checkBoxNFTAddress
+            // 
+            this.checkBoxNFTAddress.AutoSize = true;
+            this.checkBoxNFTAddress.Location = new System.Drawing.Point(33, 123);
+            this.checkBoxNFTAddress.Name = "checkBoxNFTAddress";
+            this.checkBoxNFTAddress.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.checkBoxNFTAddress.Size = new System.Drawing.Size(88, 17);
+            this.checkBoxNFTAddress.TabIndex = 34;
+            this.checkBoxNFTAddress.Text = "NFT Address";
+            this.checkBoxNFTAddress.UseVisualStyleBackColor = true;
+            this.checkBoxNFTAddress.CheckedChanged += new System.EventHandler(this.checkBoxNFTAddress_CheckedChanged);
+            // 
+            // textBoxNFTAddress
+            // 
+            this.textBoxNFTAddress.Location = new System.Drawing.Point(127, 120);
+            this.textBoxNFTAddress.Name = "textBoxNFTAddress";
+            this.textBoxNFTAddress.Size = new System.Drawing.Size(660, 20);
+            this.textBoxNFTAddress.TabIndex = 35;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(21, 81);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(490, 13);
+            this.label7.TabIndex = 36;
+            this.label7.Text = "NFT contract address and pool key are mutually exclusive - meaning you can only u" +
+    "se one or the other";
             // 
             // FrmPlotter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(850, 473);
+            this.ClientSize = new System.Drawing.Size(850, 558);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.lblPlotterLink);
             this.Controls.Add(this.btnBuyMeACoffee);
@@ -618,7 +656,6 @@ namespace SimpleChiaPlotter
         private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem1;
-        private System.Windows.Forms.Label lblPoolPublicKey;
         private System.Windows.Forms.Label lblFarmerPublicKey;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
@@ -631,5 +668,9 @@ namespace SimpleChiaPlotter
         private System.Windows.Forms.CheckBox checkBoxSwap;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.CheckBox checkBoxBuckets3;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox textBoxNFTAddress;
+        private System.Windows.Forms.CheckBox checkBoxNFTAddress;
+        private System.Windows.Forms.CheckBox checkBoxPublicPoolKey;
     }
 }
